@@ -2,16 +2,18 @@ package com.billion;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 /**
  * @author Billion
- * @create 2021-04-16 18:35
+ * @create 2021-04-22 19:07
  */
 @SpringBootApplication
+@EnableDiscoveryClient
 @EnableEurekaClient
-public class PaymentMain8001 {
+public class OrderMain80 {
 	public static void main(String[] args) {
-		SpringApplication.run(PaymentMain8001.class, args);
+		SpringApplication.run(OrderMain80.class, args);
 	}
 }
