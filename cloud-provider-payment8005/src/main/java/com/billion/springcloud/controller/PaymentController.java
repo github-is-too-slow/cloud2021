@@ -1,4 +1,4 @@
-package com.billion.controller;
+package com.billion.springcloud.controller;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,8 +15,8 @@ public class PaymentController {
 	@Value("${server.port}")
 	private Integer serverPort;
 
-	@GetMapping("/payment/zk")
+	@GetMapping("/payment/consul")
 	public String getPort(){
-		return "payment service with Zookeeper, port is: " + serverPort + UUID.randomUUID().toString();
+		return "payment service with Consul, port is: " + serverPort + UUID.randomUUID().toString();
 	}
 }

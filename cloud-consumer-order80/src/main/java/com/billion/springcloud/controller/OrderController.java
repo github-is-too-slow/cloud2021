@@ -1,4 +1,4 @@
-package com.billion.controller;
+package com.billion.springcloud.controller;
 
 import com.billion.entity.CommonResult;
 import com.billion.entity.Payment;

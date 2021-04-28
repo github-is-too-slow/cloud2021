@@ -1,4 +1,4 @@
-package com.billion.config;
+package com.billion.springcloud.config;
 
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
@@ -7,7 +7,7 @@ import org.springframework.web.client.RestTemplate;
 
 /**
  * @author Billion
- * @create 2021-04-22 18:24
+ * @create 2021-04-22 17:06
  */
 @Configuration
 public class ApplicationContextConfig {

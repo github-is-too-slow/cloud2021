@@ -1,16 +1,13 @@
-package com.billion.controller;
+package com.billion.springcloud.controller;
 
 import com.billion.entity.CommonResult;
 import com.billion.entity.Payment;
 import com.billion.service.PaymentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.cloud.client.ServiceInstance;
-import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import java.util.List;
 
 /**
  * @author Billion
@@ -23,8 +20,6 @@ public class PaymentController {
 	private PaymentService paymentService;
 	@Value("${server.port}")
 	private Integer serverPort;
-	@Resource
-	private DiscoveryClient discoveryClient;
 
 	@PostMapping("/payment/create")
 	public CommonResult create(@RequestBody Payment payment){
@@ -47,19 +42,5 @@ public class PaymentController {
 		}else {
 			return new CommonResult<>(444, "查询失败，无对应订单编号：" + id + "，服务端口号：" + serverPort, result);
 		}
-	}
-
-	@GetMapping("/payment/discovery")
-	public Object discoveryInfo(){
-		List<String> services = discoveryClient.getServices();
-		for(String service: services){
-			log.info("####" + service);
-		}
-		List<ServiceInstance> instances = discoveryClient.getInstances(services.get(0));
-		for(ServiceInstance instance: instances){
-			log.info("serviceId: " + instance.getServiceId() + " host: " + instance.getHost() +
-					" port: " + instance.getPort() + " uri: " + instance.getUri());
-		}
-		return this.discoveryClient;
 	}
 }
