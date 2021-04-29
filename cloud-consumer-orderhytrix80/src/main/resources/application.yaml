@@ -1,0 +1,35 @@
+server:
+  port: 80
+
+spring:
+  application:
+    name: cloud-consumer-hytrix
+  datasource:
+      type: com.alibaba.druid.pool.DruidDataSource  # 当前数据源操作类型
+      driver-class-name: org.gjt.mm.mysql.Driver
+      url: jdbc:mysql://localhost:3306/payment?useUnicode=true&characterEncoding=utf-8&useSSL=false
+      username: root
+      password: Kingback666
+
+eureka:
+  client:
+    # 是否向注册中心注册本服务：默认为true为是。false注册中心不需要将自己注册进去
+    register-with-eureka: true
+    # 是否从注册中心抓取己有注册信息，默认为true
+    # 单节点无所谓，集群必须为true才能配合ribbon使用负载均衡
+    fetchRegistry: true
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/
+  instance:
+    instance-id: orderEureka80
+    prefer-ip-address: true
+    #向服务器端发送心跳间隔
+    lease-renewal-interval-in-seconds: 30
+    #服务器端等待心跳时间上限
+    lease-expiration-duration-in-seconds: 90
+#ribbon:
+#  ConnectTimeout: 1000
+#  ReadTimeout: 1000
+feign:
+  hystrix:
+    enabled: true
