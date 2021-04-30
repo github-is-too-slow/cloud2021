@@ -43,4 +43,9 @@ public class PaymentController {
 			return new CommonResult<>(444, "查询失败，无对应订单编号：" + id + "，服务端口号：" + serverPort, result);
 		}
 	}
+
+	@GetMapping("/payment/port")
+	public CommonResult getServerPort(){
+		return new CommonResult<>(200, "success", serverPort);
+	}
 }
