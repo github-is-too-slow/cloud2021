@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace命名空间建议使用接口的全限定名称-->
+<mapper namespace="com.billion.springcloud.mapper.OrderMapper">
+    <!--Order实体类与t_order数据库表的映射-->
+    <resultMap id="orderMap" type="com.billion.springcloud.domain.Order">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="user_id" property="userId" jdbcType="BIGINT"/>
+        <result column="product_id" property="productId" jdbcType="BIGINT"/>
+        <result column="count" property="count" jdbcType="INTEGER"/>
+        <result column="money" property="money" jdbcType="DECIMAL"/>
+        <result column="status" property="status" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!--id建议使用方法名-->
+    <!--resultType使用全限定名称-->
+    <!--插入订单记录-->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO t_order(user_id,product_id,count,money,status)
+        VALUES (#{userId},#{productId},#{count},#{money},0);
+    </insert>
+
+    <!--更新订单状态-->
+    <update id="update">
+        UPDATE t_order SET status = 1
+        WHERE id = #{orderId} AND status = #{status};
+    </update>
+</mapper>

@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestBody;
  * @author Billion
  * @create 2021-04-28 10:46
  */
-@Service
 @FeignClient(value = "CLOUD-PAYMENT-SERVICE")
 public interface OpenFeignService {
 	@PostMapping("/payment/create")

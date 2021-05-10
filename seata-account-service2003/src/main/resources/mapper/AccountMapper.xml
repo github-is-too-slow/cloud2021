@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace命名空间建议使用接口的全限定名称-->
+<mapper namespace="com.billion.springcloud.mapper.AccountMapper">
+    <!--id建议使用方法名-->
+    <!--resultType使用全限定名称-->
+    <!--更新余额-->
+    <update id="update">
+      UPDATE t_account SET used = used + #{money}, residue = residue - #{money}
+        WHERE user_id = #{userId}
+    </update>
+</mapper>

@@ -1,0 +1,29 @@
+server:
+  port: 83
+
+spring:
+  application:
+    name: cloudalibaba-order-service
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource  # 当前数据源操作类型
+    driver-class-name: org.gjt.mm.mysql.Driver
+    url: jdbc:mysql://localhost:3306/payment?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: Kingback666
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+
+service-url:
+  nacos-user-service: http://cloudalibaba-payment-service
+
+mybatis:
+  mapperLocations: classpath:mapper/*.xml
+  type-aliases-package: com.billion.entity
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

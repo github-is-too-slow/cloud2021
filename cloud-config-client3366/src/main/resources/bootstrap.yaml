@@ -1,0 +1,40 @@
+server:
+  port: 3366
+spring:
+  application:
+    name: cloud-config-client
+  cloud:
+    config:
+      label: master
+      name: config
+      profile: dev
+      uri: http://localhost:3344
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+#暴露所有监控端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+eureka:
+  client:
+    # 是否向注册中心注册本服务：默认为true为是。false注册中心不需要将自己注册进去
+    register-with-eureka: true
+    # 是否从注册中心抓取己有注册信息，默认为true
+    # 单节点无所谓，集群必须为true才能配合ribbon使用负载均衡
+    fetchRegistry: true
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/
+  instance:
+    instance-id: config-client3366
+    prefer-ip-address: true
+    #向服务器端发送心跳间隔
+    lease-renewal-interval-in-seconds: 30
+    #服务器端等待心跳时间上限
+    lease-expiration-duration-in-seconds: 90

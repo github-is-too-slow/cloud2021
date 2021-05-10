@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace命名空间建议使用接口的全限定名称-->
+<mapper namespace="com.billion.springcloud.mapper.StorageMapper">
+    <!--id建议使用方法名-->
+    <!--resultType使用全限定名称-->
+    <!--修改库存-->
+    <update id="update">
+        UPDATE t_storage SET used = used + #{count}, residue = residue - #{count}
+        WHERE product_id = #{productId}
+    </update>
+</mapper>
